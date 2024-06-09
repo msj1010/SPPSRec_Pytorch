@@ -1,5 +1,5 @@
 
-# DGRec-pytorch
+# SPPSRec-pytorch
 
 该仓库实现了论文中的代码。
 
@@ -22,7 +22,7 @@
 pip install -r requirements.txt
 ```
 
-### Data Preparation
+### 数据准备
 
 在运行模型之前，请解压数据集
 ```bash
@@ -31,7 +31,7 @@ unzip datasets/$DATASET.zip -d datasets/$DATASET/
 
 
 
-### How To Run
+### 如何使用
 可以使用以下命令检查模型是否可以正确执行
 ```
 PYTHONPATH=src python3 run.py --data_name $DATASET
@@ -39,13 +39,12 @@ PYTHONPATH=src python3 run.py --data_name $DATASET
 
 
 ## Usage
-To use those scripts properly, move your working directory to `./src`.
+为了正确执行脚本，请将工作目录切换到 `./src`.
 
-You can tune the hyperparameters and run this project to simply type the following in your terminal:
+使用以下命令可以配置超参数并执行:
 
 ```
 python3 -m main_trainer \
-        --model ··· \
         --data_name ··· \
         --seed ··· \
         --epochs ··· \
@@ -65,25 +64,13 @@ python3 -m main_trainer \
 
 ```
 
-## Data
+## 数据
 
-### Input Data Files
-The datasets are from the original repository [(link)](https://github.com/DeepGraphLearning/RecommenderSystems/tree/master/socialRec). The format of each file is as follows:
+### 输入数据文件
+数据文件地址： 
+豆瓣：[(link)](https://github.com/DeepGraphLearning/RecommenderSystems/tree/master/socialRec).
+Yelp：[(link)](https://www.yelp.com/dataset).
+Delicious：[(link)](https://grouplens.org/datasets/hetrec-2011/). 
 
-* `train.tsv`: includes historical behaviors of users. The data in the file is loaded into pandas.Dataframe with five fields such as (SessionId UserId ItemId Timestamps TimeId)
-* `valid.tsv`: the same format as `train.tsv`, used for tuning hyperparameters.
-* `test.tsv`: the same format as `train.tsv`, used for testing model.
-* `adj.tsv`: an edge list representing relationships between users, which is also organized by pandas.Dataframe in two fields (FromId, ToId).
-* `latest_session.tsv`: serves as 'reference' to target user. This file records all users available session at each time slot. For example, at time slot t, it stores user u's t-1 th session.
-* `user_id_map.tsv`: maps original string user name to integer id.
-* `item_id_map.tsv`: maps original string item name to integer id.
 
-### Data Statistics
-The statistics of `bookdata`, `musicdata`, and `moviedata` from the Douban domain are summarized as follows:
-
-|Dataset|#user|#item|#event|
-|------|---|---|---|
-|`bookdata`|46,548|212,995|1,908,081|
-|`musicdata`|39,742|164,223|1,792,501|
-|`moviedata`|94,890|81,906|11,742,260|
 
